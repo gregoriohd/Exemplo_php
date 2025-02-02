@@ -69,3 +69,32 @@ $maiusculo = strtoupper($variavel);
 
 //
 echo $maiusculo . "<br>";
+
+// somente a primeira letra em maiusculo
+$primeira_letra = ucfirst($minusculo);
+
+echo $primeira_letra . "<br>";
+
+// cada palavra com letra maiuscula
+$letra_cada_palavra = ucwords($minusculo);
+
+echo $letra_cada_palavra_maiusculo . "<br>";
+
+
+
+// Criando um salt aleatório e seguro
+$salt = '$6$rounds=5000$' . bin2hex(random_bytes(16)) . '$'; // $6$ indica SHA-512, rounds define o número de iterações
+
+
+$hash_crypto = crypt("123g456g", $salt);
+
+echo $hash_crypto . "<br>";
+
+
+// Verificando a senha
+$inputPassword = "123g456g";
+if (crypt($inputPassword, $hash_crypto) === $hash_crypto) {
+    echo "Senha válida!\n";
+} else {
+    echo "Senha incorreta!\n";
+}
